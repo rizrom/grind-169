@@ -26,13 +26,30 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 """
 from typing import List
 
-from utils.random_num_generator import get_list
+from utils.random_num_generator import get_list, get
 
 
 def two_sum(nums: List[int], target: int) -> List[int]:
-	pass
+    lut = {}
+    result: List[int] = []
+    for index, item in enumerate(nums):
+        if target-item in lut:
+            result = [lut[target-item], index]
+            break
+        else:
+            lut.update({item: index})
+    return result
 
 
 if __name__ == "__main__":
-	arr = get_list(10, -109, 109)
-	print(two_sum(arr, 10))
+    nums = get_list(get(2, 104), -109, 109)
+    target = 6
+    result = two_sum(nums, target)
+
+    print("nums: ", nums)
+    print("target: ", target)
+    
+    if len(result) > 1:
+        print(nums[result[0]], nums[result[1]])
+    else:
+        print("Not Found")

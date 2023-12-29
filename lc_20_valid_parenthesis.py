@@ -26,3 +26,25 @@ Constraints:
 1 <= s.length <= 104
 s consists of parentheses only '()[]{}'.
 """
+
+from utils.stack import Stack
+
+
+def check_valid_parenthesis(p_string) -> bool:
+	stack = Stack()
+	opening_bracket = ['{', '[', '(']
+	closing_bracket =  ['}', ']', ')']
+	for c in p_string:
+		if c in opening_bracket:
+			stack.push(c)
+		else:
+			stack.pop()
+	return stack.is_empty()
+
+
+if __name__ == "__main__":
+	print(check_valid_parenthesis("()"))
+	print(check_valid_parenthesis("()[]{}"))
+	print(check_valid_parenthesis("()[{}]"))
+	print(check_valid_parenthesis("("))
+	

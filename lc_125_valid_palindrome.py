@@ -28,3 +28,21 @@ Constraints:
 1 <= s.length <= 2 * 105
 s consists only of printable ASCII characters.
 """
+
+
+def is_palindrome(p_str) -> bool:
+	# p_str = p_str.replace(" ", "").lower()
+	# length = len(p_str)//2
+	# first_half = p_str[:length]
+	# second_half = p_str[length:] if len(p_str) % 2 == 0 else p_str[length+1:]
+	# second_half = second_half[::-1]
+	# return second_half == first_half
+	clean_str = ''.join(char.lower() for char in p_str if char.isalnum())
+	return clean_str == clean_str[::-1]
+
+
+if __name__ == "__main__":
+	print(is_palindrome("amanaplanacanalpanama"))
+	print(is_palindrome("raceacar"))
+	print(is_palindrome(" "))
+
